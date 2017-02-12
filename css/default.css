@@ -1,0 +1,84 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+@import url(https://fonts.googleapis.com/css?family=Patua+One);
+@import url(https://fonts.googleapis.com/css?family=Arvo);
+
+body {
+    color: #031634;
+    background-color: #E8DDCB;
+}
+
+div#content {
+    font-family: 'Patua One',
+    background-color: grey,
+}
+
+div#header {
+    border-bottom: 2px solid black;
+    margin-bottom: 30px;
+    margin-top: 2%;
+   padding: 12px 0px 12px 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roberto Mono',  sans-serif;
+}
+
+div.info {
+    font-family: 'Arvo';
+    color: #555;
+    font-size: 14px;
+    font-style: italic;
+}
+
+nav ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+header a,
+header a:visited {
+  line-height: 90%;
+  color: #031634;
+  text-decoration:none;
+}
+
+header {
+  font-size:24pt;
+  font-weight:bold;
+  margin-bottom: 20px;
+  border-bottom: 3px #031634 double;
+}
+
+nav a {
+    color: #033649;
+    text-decoration: none;
+    font-size: 200%;
+    display: block;
+}
+
+nav a:hover {
+  background-color: #CDB380;
+  color: #033649;
+  text-decoration: none;
+  font-size: 200%;
+}
+
+header a,
+header a:visited {
+  line-height: 90%;
+  color: #031634;
+  text-decoration:none;
+}
+
+header a:hover {
+  color:#333;
+  text-decoration:none;
+}
+
+header {
+  font-size:24pt;
+  font-weight:bold;
+  margin-bottom: 20px;
+  border-bottom: 3px #031634 double;
+}

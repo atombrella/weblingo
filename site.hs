@@ -3,6 +3,7 @@
 {-# LANGUAGE GADTSyntax #-}
 import   Data.Monoid (mappend,(<>),mconcat)
 import   Hakyll
+import   Text.Regex
 
 --------------------------------------------------------------------------------
 main :: IO ()
@@ -59,7 +60,6 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateCompiler
 
-
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
@@ -75,18 +75,22 @@ sassCompiler =
     >>= return . fmap compressCss
 
 --------------------------------------------------------------------------------
--- metaKeywordContext will return a Context containing a String
 metaKeywordContext :: Context String
--- can be reached using $metaKeywords$ in the templates
--- Use the current item (markdown file)
 metaKeywordContext = field "metaKeywords" $ \item -> do
-  -- tags contains the content of the "tags" metadata
-  -- inside the item (understand the source)
   tags <- getMetadataField (itemIdentifier item) "tags"
-  -- if tags is empty return an empty string
-  -- in the other case return
-  --   <meta name="keywords" content="$tags$">
   return $ maybe "" showMetaTags tags
     where
       showMetaTags t = "<meta name=\"keywords\" content=\""
         ++ t ++ "\">\n"
+
+--------------------------------------------------------------------------------
+-- Find and replace bare youtube links separated by <p></p>.
+youtubeFilter :: String -> String
+youtubeFilter x = subRegex regex x result
+  where
+    regex = mkRegex "<p>https?://www\\.youtube\\.com/watch\\?v=([A-Za-z0-9_-]+)</p>"
+    result = "<div class=\"video-wrapper\">\
+                \<div class=\"video-container\">\
+                  \<iframe src=\"//www.youtube.com/embed/\\1\" frameborder=\"0\" allowfullscreen/>\
+                \</div>\
+             \</div>";
